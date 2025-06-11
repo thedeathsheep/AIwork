@@ -1,90 +1,63 @@
-# AI Project Management Learning Platform
+# AI Chat Assistant
 
-This platform is designed to help AI project managers learn and practice essential skills in managing AI projects.
+一个基于 LangChain 和 AiHubMix API 的智能对话助手。
 
-## Project Structure
+## 项目特点
+
+- 使用 LangChain 框架构建
+- 支持多种 AI 模型
+- 模块化设计
+- 完整的错误处理
+- 支持对话历史记录
+- 可配置的系统提示词
+
+## 项目结构
 
 ```
-.
-├── README.md                 # Project documentation
-├── requirements.txt          # Python dependencies
-├── src/                     # Source code
-│   ├── project_management/   # Project management tools
-│   ├── model_training/      # AI model training pipeline
-│   ├── deployment/          # Deployment scripts
-│   └── monitoring/          # Performance monitoring
-├── tests/                   # Test cases
-└── docs/                    # Documentation
+aichat/
+├── src/
+│   ├── __init__.py
+│   ├── config.py          # 配置管理
+│   ├── chat/
+│   │   ├── __init__.py
+│   │   ├── agent.py       # 对话代理
+│   │   └── memory.py      # 对话记忆管理
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   └── logger.py      # 日志工具
+│   └── models/
+│       ├── __init__.py
+│       └── chat_model.py  # 模型配置
+├── tests/                 # 单元测试
+├── .env.example          # 环境变量示例
+├── environment.yml       # Conda 环境配置
+└── main.py              # 主程序入口
 ```
 
-## Features
+## 安装
 
-1. Project Management
-   - Task tracking
-   - Resource allocation
-   - Progress monitoring
-   - Risk management
-
-2. AI Model Training
-   - Data preprocessing
-   - Model training pipeline
-   - Model evaluation
-   - Performance metrics
-
-3. Deployment
-   - CI/CD pipeline
-   - Environment configuration
-   - Scaling management
-
-4. Monitoring
-   - Performance metrics
-   - Resource usage
-   - Error tracking
-   - Alert system
-
-## Getting Started
-
-1. Install dependencies:
+1. 克隆仓库
+2. 创建并激活 conda 环境：
 ```bash
-pip install -r requirements.txt
+conda env create -f environment.yml
+conda activate aichat
 ```
 
-2. Set up the development environment:
+3. 复制 `.env.example` 到 `.env` 并配置你的 API 密钥
+
+## 使用方法
+
 ```bash
-python setup.py develop
+python main.py
 ```
 
-3. Run the test suite:
-```bash
-pytest tests/
-```
+## 开发
 
-## Learning Path
+- 使用 Python 3.10+
+- 遵循 PEP 8 编码规范
+- 使用 type hints 进行类型注解
+- 编写单元测试
 
-1. Week 1: Project Management & AI Development
-   - Learn essential project management methodologies
-   - Practice task tracking and resource allocation
-   - Study AI model development process
-   - Practice data preprocessing basics
+## 许可证
 
-2. Week 2: Model Training & Evaluation
-   - Deep dive into model training pipeline
-   - Learn model evaluation techniques
-   - Practice performance metrics analysis
-   - Understand model optimization
-
-3. Week 3: Deployment & CI/CD
-   - Learn CI/CD practices
-   - Understand containerization
-   - Practice deployment strategies
-   - Set up basic scaling configurations
-
-4. Week 4: Monitoring & Production
-   - Implement monitoring tools
-   - Set up alert systems
-   - Practice performance optimization
-   - Learn production error handling
-
-## Contributing
-
-Feel free to submit issues and enhancement requests! 
+MIT License 

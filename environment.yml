@@ -1,0 +1,18 @@
+name: aichat
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - black  # 代码格式化工具
+  - isort  # import 排序工具
+  - flake8  # 代码检查工具
+  - pytest  # 测试框架
+  - pip:
+    - langchain>=0.1.0
+    - langchain-openai==0.3.18
+    - python-dotenv>=1.0.0
+    - mypy  # 类型检查工具
+    - pre-commit  # Git 提交前检查工具
+
