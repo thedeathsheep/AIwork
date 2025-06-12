@@ -5,14 +5,17 @@ channels:
 dependencies:
   - python=3.10
   - pip
-  - black  # 代码格式化工具
-  - isort  # import 排序工具
-  - flake8  # 代码检查工具
-  - pytest  # 测试框架
+  - pandas=2.2.1  # 最新的稳定版本
+  - numpy=1.26.4  # 最新的稳定版本
+  - scikit-learn=1.4.1  # 最新的稳定版本
+  - black=24.2.0  # 最新的稳定版本
+  - isort=5.13.2  # 最新的稳定版本
+  - flake8=7.0.0  # 最新的稳定版本
+  - pytest=8.0.2  # 最新的稳定版本
   - pip:
     - langchain>=0.1.0
     - langchain-openai==0.3.18
     - python-dotenv>=1.0.0
-    - mypy  # 类型检查工具
-    - pre-commit  # Git 提交前检查工具
+    - mypy==1.8.0  # 最新的稳定版本
+    - pre-commit==3.6.0  # 最新的稳定版本
 

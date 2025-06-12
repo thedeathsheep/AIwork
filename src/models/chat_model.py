@@ -1,6 +1,6 @@
-from typing import List, Dict, Any
+from typing import List
 from langchain_openai import ChatOpenAI
-from langchain.schema import SystemMessage, HumanMessage
+from langchain.schema import BaseMessage
 from ..config import Config
 from ..utils.logger import setup_logger
 
@@ -18,29 +18,19 @@ class ChatModel:
         )
         logger.info(f"初始化聊天模型: {Config.DEFAULT_MODEL}")
     
-    def chat(self, messages: List[Dict[str, str]]) -> str:
+    def chat(self, messages: List[BaseMessage]) -> str:
         """
         进行对话
         
         Args:
-            messages: 消息列表，每个消息包含 role 和 content
+            messages: LangChain 消息列表
             
         Returns:
             str: AI 的回复
         """
         try:
-            # 转换消息格式
-            formatted_messages = [
-                SystemMessage(content=Config.SYSTEM_PROMPT)
-            ]
-            formatted_messages.extend([
-                HumanMessage(content=msg["content"]) if msg["role"] == "user"
-                else SystemMessage(content=msg["content"])
-                for msg in messages
-            ])
-            
             # 获取回复
-            response = self.model.invoke(formatted_messages)
+            response = self.model.invoke(messages)
             return response.content
             
         except Exception as e:
