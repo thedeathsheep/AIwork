@@ -1,0 +1,41 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+1. **语言规范**:
+   - 交流使用中文
+   - 代码内容使用英文(注释可以使用中文)
+   - Google规范
+   - 所有代码需要注释，以便于理解，在保持技术性的同时，使用通俗易懂的语言
+
+2. **环境配置**:
+   - 项目运行于Windows环境
+   - MinGW位于`C:\mingw64\bin`
+   - 项目使用 anaconda，路径为`C:\ProgramData\anaconda3`
+   - 所有依赖包和环境包需要使用最新稳定版
+
+3. **API调用规范**:
+   - 使用AiHubMix作为OpenAI API的替代方案
+   ```python
+   from openai import OpenAI
+
+   client = OpenAI(
+       api_key="sk-***",  # 替换为AiHubMix生成的密钥
+       base_url="https://aihubmix.com/v1"
+   )
+
+   chat_completion = client.chat.completions.create(
+       messages=[{"role": "user", "content": "Say this is a test"}],
+       model="gpt-4o-mini",
+   )
+   ```
+
+4. **目录结构**:
+   - 源代码放在`src`目录
+   - 文档放在`docs`目录
+   - 测试放在`tests`目录
+
+5. **代码审查**:
+   - 提交前进行代码规范检查
+   - 使用统一的命名规范
