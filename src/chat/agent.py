@@ -17,15 +17,15 @@ class ChatAgent:
         self.system_message = SystemMessage(content=Config.SYSTEM_PROMPT)
         logger.info("初始化对话代理")
     
-    def chat(self, messages: List[BaseMessage]) -> str:
+    def chat(self, messages: List[BaseMessage]) -> tuple[str, str]:
         """
-        处理用户输入并返回回复
+        处理用户输入并返回回复和思考过程
         
         Args:
             messages: LangChain 消息列表
             
         Returns:
-            str: AI 的回复
+            tuple[str, str]: (AI 的回复, 思考过程)
         """
         try:
             # 获取历史消息
@@ -50,8 +50,8 @@ class ChatAgent:
             # 合并系统消息、历史消息和当前消息
             all_messages = [self.system_message] + history_messages + messages
             
-            # 获取 AI 回复
-            response = self.model.chat(all_messages)
+            # 获取 AI 回复和思考过程
+            response, thinking = self.model.chat(all_messages)
             
             # 添加用户消息和 AI 回复到历史记录
             for msg in messages:
@@ -59,7 +59,7 @@ class ChatAgent:
                     self.memory.add_message("user", msg.content)
             self.memory.add_message("assistant", response)
             
-            return response
+            return response, thinking
             
         except Exception as e:
             logger.error(f"对话处理出错: {str(e)}")

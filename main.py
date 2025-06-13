@@ -43,8 +43,16 @@ def process_content(content: str, agent: ChatAgent) -> None:
         system_message = SystemMessage(content=SYSTEM_PROMPT)
         human_message = HumanMessage(content=content)
         
-        # 获取 AI 回复
-        response = agent.chat([system_message, human_message])
+        # 获取 AI 回复和思考过程
+        response, thinking = agent.chat([system_message, human_message])
+        
+        # 显示思考过程
+        print("\n思考过程:")
+        print("-" * 50)
+        print(thinking)
+        print("-" * 50)
+        
+        # 显示最终回复
         print(f"\n助手: {response}")
         
     except Exception as e:
