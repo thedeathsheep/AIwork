@@ -78,8 +78,6 @@ def main():
         while True:
             print("\n等待用户输入...")
             user_input = input("\n请输入你的问题: ").strip()
-            print(f"收到用户输入: {user_input}")
-            
             if not user_input:
                 print("输入为空，继续等待...")
                 continue
@@ -99,9 +97,9 @@ def main():
                 print("\nFew-shot 示例:")
                 for i, example in enumerate(FEW_SHOT_EXAMPLES, 1):
                     print(f"\n示例 {i}:")
-                    print(f"用户: {example['user']}")
+                    print(f"用户: {example['  user']}")
                     print(f"助手: {example['assistant']}")
-                continue
+                continue 
             
             process_content(user_input, agent)
                 
